@@ -92,7 +92,6 @@ class MailerTable extends AbstractTableGateway implements ServiceLocatorAwareInt
             $select->from($this->config['table']);
             $select->where(array('status'=>'waiting','queue_name'=>$queue_name));
             $select->order('created');
-            //TODO add LIMIT 1
             $resultset = $connection->execute($select->getSqlString($this->tableGateway->adapter->getPlatform()));
             $mailer = $resultset->current(); 
             

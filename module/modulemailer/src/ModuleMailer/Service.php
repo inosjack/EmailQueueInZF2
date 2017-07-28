@@ -1,11 +1,14 @@
 <?php
 /**
- * ModuleMailer
+ * PpModuleMailer
+ *
+ * @link      https://github.com/cobyl/PpModuleMailer
+ * @copyright Copyright (c) www.pracowici-programisci.pl
  */
 
-namespace ModuleMailer;
+namespace PpModuleMailer;
 
-use ModuleMailer\Model\MailerTable;
+use PpModuleMailer\Model\MailerTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Mail\Message;
@@ -32,7 +35,7 @@ class Service
 
     public function __construct(\Zend\ServiceManager\ServiceManager $sm)
     {
-        $this->config = $sm->get('config')['ModuleMailer'];
+        $this->config = $sm->get('config')['PpModuleMailer'];
 
         if ($sm->has('translator')) $this->translate = $sm->get('translator');
 
@@ -40,8 +43,6 @@ class Service
         $resultSetPrototype = new ResultSet();
         $resultSetPrototype->setArrayObjectPrototype(new Model\Mailer());
         $tableGateway = new TableGateway($this->config['table'], $dbAdapter, null, $resultSetPrototype);
-
-        //TODO inject config in more proper way?
         $this->table = new Model\MailerTable($tableGateway, $this->config);
     }
     
@@ -107,7 +108,6 @@ class Service
                 return join('; ',$result);
             };
             try {
-                //TODO process each To: separately
                 $transport->send($mail->mail);
                 $success++;
                 file_put_contents('php://stdout', 'Mail sent to: '.$to()."\n",FILE_APPEND);
