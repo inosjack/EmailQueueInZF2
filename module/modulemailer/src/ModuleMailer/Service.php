@@ -6,7 +6,7 @@
  * @copyright Copyright (c) www.pracowici-programisci.pl
  */
 
-namespace PpModuleMailer;
+namespace ModuleMailer;
 
 use PpModuleMailer\Model\MailerTable;
 use Zend\Db\ResultSet\ResultSet;
@@ -35,7 +35,7 @@ class Service
 
     public function __construct(\Zend\ServiceManager\ServiceManager $sm)
     {
-        $this->config = $sm->get('config')['PpModuleMailer'];
+        $this->config = $sm->get('config')['ModuleMailer'];
 
         if ($sm->has('translator')) $this->translate = $sm->get('translator');
 
