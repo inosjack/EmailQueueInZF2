@@ -16,7 +16,7 @@
     "autoload": {
         "psr-0": {
             "PostApi": "module/PostApi/src/",
-            "ModuleMailer": "vendor/cobyl/modulemailer/src/"
+            "ModuleMailer": "module/modulemailer/src/"
         }
     }
 }
