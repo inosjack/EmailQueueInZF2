@@ -8,11 +8,9 @@
 
 namespace ModuleMailer;
 
-use PpModuleMailer\Model\MailerTable;
+use ModuleMailer\Model\MailerTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
-use Zend\Mail\Message;
-use Zend\Mail\Transport;
 use Zend\Mail\Transport\Smtp;
 use Zend\Mail\Transport\SmtpOptions;
 
